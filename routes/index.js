@@ -507,8 +507,8 @@ router.post('/create-checkout-session', async (req, res) => {
         quantity: seats,
       }],
       mode: 'payment',
-      success_url: `http://localhost:3000/confirm-booking?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: 'http://localhost:3000/payment-failed',
+      success_url: `https://busify-0ru5.onrender.com/confirm-booking?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: 'https://busify-0ru5.onrender.com/payment-failed',
     });
 
     console.log("✅ Stripe Session Created:", session.id);
