@@ -1,0 +1,326 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+  }
+
+.flash-message {
+    background-color: #4BB543;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    position: fixed;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+body {
+    background-color: #fd4942;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    position: relative; /* Enables positioning for the hover text */
+}
+
+.logo {
+    width: 120px;
+    height: 60px;
+    margin-right: 5px;
+}
+
+.hover-text {
+    position: absolute;
+    bottom: -15%; /* Places the text */
+    left: 50%;
+    transform: translateX(-130%);
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background for the text */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    font-size: 12px;
+    opacity: 0; /* Initially hidden */
+    visibility: hidden; /* Prevents interaction when hidden */
+    transition: opacity 0.3s ease;
+}
+
+/* Show hover text on hover */
+.logo-container a:hover .hover-text {
+    opacity: 1;
+    visibility: visible;
+}
+
+.acc{
+    padding-top: 7px;
+}
+
+.accimg {
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+    padding: inherit;
+}
+
+.account-button {
+    display: flex;
+    font-size: 22px;
+    text-align: center;
+    padding: 5px;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.account-button:hover {
+    color: #fd4942;
+    border-radius: 10px;
+    transition: linear 0.3s;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; /* spacing between links */
+    flex-grow: 1; /* allow it to take up available space */
+    list-style: none; /* remove bullets */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    font-weight: 530;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #fd4942;
+    
+    transition: linear 0.3s;
+}
+
+.vl {
+    border-left: 1px solid grey;
+    height: 20px;
+  }
+
+.image-container {
+position: relative;
+}
+
+.booking-container {
+    position: absolute; 
+    bottom: -65px;
+    left: 50%; 
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.booking-form {
+display: flex;
+flex-wrap: wrap; /* Adjust layout on smaller screens */
+gap: 15px;
+justify-content: space-between;
+}
+
+.field {
+display: flex;
+flex-direction: column;
+align-items: center;
+min-width: 150px;
+}
+
+label {
+font-weight: bold;
+color: #913831;
+margin: 5px;
+}
+
+select,
+input[type="date"] {
+width: 100%;
+height: 50px;
+padding: 6px 8px;
+border: 2px solid #ddd;
+border-radius: 5px;
+box-sizing: border-box;
+font-size: 14px;
+margin-top: -7px;
+}
+
+button {
+    padding: 20px 20px;
+    font-size: 16px;
+    background-color: #913831;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+button:hover {
+    background-color: #fd4942;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    transition: background-color 0.3s ease;
+}
+
+.tagline {
+    font-size: 2em;
+    color: navajowhite;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.popular-routes-section {
+    text-align: center;
+    padding: 50px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.popular-routes-section h2 {
+    font-size: 2em;
+    color: #913831;
+    margin-bottom: 20px;
+}
+
+.route-items {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.route {
+    text-align: center;
+    width: 300px;
+}
+
+    .route img {
+        width: 120px;
+        height:120px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    .route h3 {
+        font-size: 1.2em;
+        color: #333;
+        margin: 10px 0;
+    }
+
+    .route p {
+        font-size: 0.9em;
+        color: #555;
+    }
+
+.popimg:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    transition: linear 0.3s;
+}
+
+#faqs {
+    margin: 50px auto;
+    max-width: 800px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+#faqs h2 {
+    text-align: center;
+    color: #913831;
+    margin-bottom: 30px;
+}
+
+.faq-item {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+.faq-question {
+    cursor: pointer;
+    font-size: 18px;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.faq-question:hover {
+    text-decoration: underline;
+}
+
+.faq-answer {
+    display: none;
+    padding-left: 10px;
+    font-size: 16px;
+    color: black;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+#about-us {
+    margin: 50px auto;
+    max-width: 800px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+#about-us h2 {
+    text-align: center;
+    color: #913831;
+    margin-bottom: 20px;
+}
+
+#about-us p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}

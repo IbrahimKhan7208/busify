@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Busify</title>
+    <link rel="stylesheet" href="/stylesheets/home.css">
+    <script src="/javascripts/home.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+           <a href="/home">
+             <img src="/images/Busify.png" alt="Busify Logo" class="logo">
+             <span class="hover-text">Home</span>
+           </a>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="#search-bus">Search Bus</a></li>
+          <div class="vl"></div>
+          <li><a href="#faqs">FAQs</a></li>
+          <div class="vl"></div>
+          <li><a href="#about-us">About Us</a></li>
+        </ul>
+
+        <nav>
+            <a href="/account" class="account-button">
+                <img src="/images/acc.png" alt="Acc" class="accimg"/>
+                <span class="acc">Account</span>
+            </a>
+        </nav>
+    </header>
+    <main>
+      <% if (success_msg) { %>
+        <div id="flash-message" class="flash-message">
+          <%= success_msg %>
+        </div>
+      <% } %>
+    
+      <script>
+        const flashMessage = document.getElementById('flash-message');
+        if (flashMessage) {
+          setTimeout(() => {
+            flashMessage.style.opacity = '0';
+            setTimeout(() => {
+              flashMessage.remove();
+            }, 500);
+          }, 3000);
+        }
+      </script>
+         
+    <div class="image-container">
+      <section id="search-bus">
+    <img src="/images/image-section.jpg" alt="Background Image" style="width: 100%; height: 560px;">
+    
+    <div class="booking-container">
+
+      <form action="/booking-page" method="get" class="booking-form" onsubmit="searchBuses(event)">
+        <div class="field">
+          <label for="from">From</label><br>
+          <select id="from" name="from" onchange="updateOptions()" required>
+            <option value="-1">Select Source</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Ahmedabad">Ahmedabad</option>
+            <option value="Kolkata">Kolkata</option>
+          </select>
+        </div>
+    
+        <div class="field">
+          <label for="to">To</label><br>
+          <select id="to" name="to" onchange="updateOptions()" required>
+            <option value="-1">Select Destination</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Ahmedabad">Ahmedabad</option>
+            <option value="Kolkata">Kolkata</option>
+          </select>
+        </div>
+    
+        <div class="field">
+          <label for="date">Date</label><br>
+          <input type="date" id="date" name="date" required />
+        </div>
+    
+        <div class="field">
+          <button type="submit">Search Buses</button>
+        </div>
+      </form>
+    </div>
+ 
+    </div>
+
+    <br /><br /><br /><br />
+
+    
+        <h2 class="tagline">Fast, Reliable, and Affordable Bus Services.</h2>
+
+    <br />
+
+    <div class="popular-routes-section">
+    <h2>Popular Routes</h2>
+    <div class="route-items">
+        <div class="route">
+            <a href="/mum-dlh"><img src="/images/mumTOdlh.png" alt="Mumbai to Delhi" class="popimg"></a>
+            <h3>Mumbai to Delhi</h3>
+            <p>Fast and reliable service between major hubs.</p>
+        </div>
+        <div class="route">
+            <a href="/mum-hyd"><img src="/images/mumTOhyd.png" alt="Mumbai to Hyderabad" class="popimg"></a>
+            <h3>Mumbai to Hyderabad</h3>
+            <p>Safe journeys through scenic routes.</p>
+        </div>
+          <div class="route">
+            <a href="/dlh-hyd"><img src="/images/dlhTOhyd.png" alt="Delhi to Hyderabad" class="popimg"></a>
+            <h3>Delhi to Hyderabad</h3>
+            <p>Convenient timings and excellent service.</p>
+          </div>
+       </div>
+     </div>
+    </section> 
+    <section id="faqs">
+    <h2>FAQs</h2>
+    
+    <div class="faq-item">
+      <h3 class="faq-question" onclick="toggleAnswer(this)"> 1. How can I book a bus ticket?</h3>
+      <p class="faq-answer">To book a bus ticket, select your departure city in the "From" field and your destination city in the "To" field. Choose a bus from the available options, fill in your details, and proceed with the payment.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3 class="faq-question" onclick="toggleAnswer(this)"> 2. Can I cancel my ticket after booking?</h3>
+      <p class="faq-answer">Yes, you can cancel your ticket if it is still valid. Visit the "Show My Ticket" section on your account page to view your most recent and valid ticket. If eligible, you can select the ticket and follow the steps to cancel it. Refunds are subject to our cancellation policy.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3 class="faq-question" onclick="toggleAnswer(this)"> 3. How do I view my booking history?</h3>
+      <p class="faq-answer">You can view your booking history by logging into your account and navigating to the "Booking History" section on the account page. All your past bookings will be listed there.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3 class="faq-question" onclick="toggleAnswer(this)"> 4. Are online payments secure on your platform?</h3>
+      <p class="faq-answer">Yes, we use secure payment gateways with encryption to ensure your payment information remains confidential and protected.</p>
+    </div>
+  </section>
+
+  <section id="about-us">
+    <h2>About Us</h2>
+    <p>Welcome to <b>Busify</b>, your trusted platform for seamless bus travel experiences. We are committed to providing you with easy, reliable, and safe travel options. Our goal is to make traveling convenient and enjoyable for everyone, no matter where you're headed.</p>
+    <p>At Busify, we value our customers and work tirelessly to bring you affordable and top-notch services. Whether you're commuting daily or embarking on an adventure, we're here to support your journey.</p>
+    <p><b>Our Mission:</b> To revolutionize the way people travel by bus through innovation, simplicity, and customer satisfaction.</p>
+  </section>
+
+    </main>
+</body>
+</html>

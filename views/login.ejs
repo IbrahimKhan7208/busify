@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="/stylesheets/login.css">
+</head>
+<body>
+    
+    <div class="container">
+        
+            <div class="logo">
+                <img src="/images/Busify.png" alt="Logo" class="logo-img">
+            </div>
+            <h2>Login</h2>
+
+            <form action="/login" method="post">
+                <label for="username">USERNAME :</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">PASSWORD :</label>
+                <input type="password" id="password" name="password" required>
+
+                <% if(error.length > 0){ %>
+                    <p class="error"><%= error %></p>
+                <% } %>
+
+                <button type="submit">Log In</button>
+
+                <p class="signup-link">Don't have an account? <a href="/signup">Sign up</a></p>
+            </form>
+        
+    </div>
+</body>
+</html>

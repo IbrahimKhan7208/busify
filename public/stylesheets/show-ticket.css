@@ -1,0 +1,176 @@
+body {
+    font-family:  Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fd4942;
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+img{
+  width: 160px;
+  height: 80px;
+}
+
+.n1{
+  color: #913831;
+}
+
+p{
+  display: inline-block;
+  width: 45%; /* Adjust width as needed */
+  margin: 0;
+  vertical-align: top;
+  padding: 10px;
+  font-size: medium;
+}
+
+h1{
+    color: #913831;
+    text-align: center;
+}
+
+.psg{
+    text-align: left;
+}
+
+.passenger-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  
+  .passenger-table th,
+  .passenger-table td {
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    text-align: center;
+  }
+  
+  .passenger-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .passenger-table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+
+  .btn {
+    width: 40%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #913831;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #fd4942;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    color: wheat;
+}
+
+.ticket-card {
+  border: 2px solid #ddd;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+  border-radius: 10px;
+}
+
+.close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+label {
+  padding: 5px;
+  color: #913831;
+  font-weight: bold; /* Make labels more prominent */
+}
+
+select,
+textarea {
+  margin: 15px;
+  width: 90%; /* Make inputs take the full width */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+textarea {
+  resize: none; /* Prevent resizing of the textarea */
+}
+
+button {
+  background-color: #913831;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1em;
+  width: 200px;
+  margin: 0 auto; /* Center the button */
+  display: block;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #fd4942;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  transition: background-color 0.3s ease;
+}

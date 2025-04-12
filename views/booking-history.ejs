@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking History</title>
+  <link rel="stylesheet" href="/stylesheets/show-ticket.css">
+</head>
+<body>
+  <div class="container">
+    <a href="/home"><img src="/images/Busify.png" alt="logo"></a>
+    <h1>My Booking History</h1>
+
+    <% if (ticketDetails.length > 0) { %>
+      <% ticketDetails.forEach(({ ticket, journeyDate }) => { %>
+        <div class="ticket-card">
+          <h2>Ticket Details</h2>
+          <h2 class="n1"> <%= ticket.busId ? ticket.busId.name : 'Bus might be removed by Agency' %></h2>
+          <p><strong>From:</strong> <%= ticket.busId ? ticket.busId.source : 'N/A' %></p>
+          <p><strong>To:</strong> <%= ticket.busId ? ticket.busId.destination : 'N/A' %></p>
+          <p><strong>Journey Date:</strong> <%= journeyDate %></p>
+          <p><strong>Departure Time:</strong> <%= new Date(ticket.departureTime).toLocaleTimeString('en-IN') %></p>
+          <p><strong>Seats:</strong> <%= ticket.seats %></p>
+          <p><strong>Total Fare:</strong> ₹<%= ticket.fare %></p>
+          <hr>
+          <h3>Passenger Details</h3>
+          <% ticket.passengers.forEach((passenger, index) => { %>
+            <p><strong>Passenger <%= index + 1 %>:</strong> <%= passenger.name %> (<%= passenger.gender %>, <%= passenger.age %>)</p>
+          <% }) %>
+        </div>
+        <br>
+      <% }) %>
+    <% } else { %>
+      <p>No tickets available.</p>
+    <% } %>
+  </div>
+</body>
+</html>

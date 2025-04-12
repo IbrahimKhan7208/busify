@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Book Ticket</title>
+    <link rel="stylesheet" href="/stylesheets/book-ticket.css">
+    <script src="/javascripts/payment.js"></script>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+       <a href="/home">
+         <img src="/images/Busify.png" alt="Busify Logo" class="logo">
+         <span class="hover-text">Home</span>
+       </a>
+    </div>
+
+    <nav>
+        <a href="/account" class="account-button">
+            <img src="/images/acc.png" alt="Acc" class="accimg"/>
+            <span class="acc">Account</span>
+        </a>
+    </nav>
+</header>
+<main>
+    <h1>Book Your Ticket</h1>
+    <div class="container">
+        <div class="bus-details">
+          <h2>Bus Details</h2>
+          <p><strong>Bus Name:</strong> <%= bus.name %></p>
+          <p><strong>Bus Number:</strong> <%= bus.busnumber %></p>
+          <p><strong>From:</strong> <%= bus.source %></p>
+          <p><strong>To:</strong> <%= bus.destination %></p>
+          <p><strong>Departure Time:</strong> <%= bus.formattedDepartureTime %></p>
+          <p><strong>Arrival Time:</strong> <%= bus.formattedArrivalTime %></p>
+          <p><strong>Price:</strong> ₹<%= bus.fare %> (per seat)</p>
+          <p><strong>Available Seats: <%= bus.capacity %> </strong> </p>
+        </div>
+
+        <div class="form-container">
+          <h2>Enter Passenger's Details</h2>
+          <form id="bookingForm">
+          <input type="hidden" name="username" value="<%= user.username %>">
+          <input type="hidden" name="busId" value="<%= bus._id %>">
+          <input type="hidden" id="busCapacity" value="<%= bus.capacity %>">
+          <input type="hidden" name="fare" value="<%= bus.fare %>">
+        
+          <label for="seats">Number of Seats:</label>
+          <input type="number" id="seats" name="seats" min="1" max="<%= bus.capacity %>" placeholder="Enter How Many Seats You Want To Book" required>
+        
+          <div id="passenger-details"></div>
+        
+          <button type="button" id="pay-button">Proceed to Payment</button>
+        </form>
+        
+        <script>
+          const seatsInput = document.getElementById('seats');
+          const busCapacity = parseInt(document.getElementById('busCapacity').value, 10);
+          const bookingForm = document.getElementById('bookingForm');
+          const passengerDetailsContainer = document.getElementById('passenger-details');
+        
+          seatsInput.addEventListener('input', () => {
+            const numberOfSeats = parseInt(seatsInput.value) || 0;
+        
+            if (numberOfSeats > busCapacity) {
+              alert(`Only ${busCapacity} seats are available.`);
+              seatsInput.value = busCapacity;
+            } else {
+              passengerDetailsContainer.innerHTML = ''; 
+              for (let i = 1; i <= numberOfSeats; i++) {
+                const passengerFields = `
+                  <fieldset>
+                    <legend>Passenger ${i}</legend>
+                    <label for="name${i}">Name:</label>
+                    <input type="text" id="name${i}" name="passengers[${i - 1}][name]" required>
+        
+                    <label for="gender${i}">Gender:</label>
+                    <select id="gender${i}" name="passengers[${i - 1}][gender]" required>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select>
+        
+                    <label for="age${i}">Age:</label>
+                    <input type="number" id="age${i}" name="passengers[${i - 1}][age]" required>
+        
+                    <label for="email${i}">Email:</label>
+                    <input type="email" id="email${i}" name="passengers[${i - 1}][email]" required>
+        
+                    <label for="phone${i}">Phone:</label>
+                    <input type="tel" id="phone${i}" name="passengers[${i - 1}][phone]" required>
+                  </fieldset>
+                `;
+                passengerDetailsContainer.insertAdjacentHTML('beforeend', passengerFields);
+              }
+            }
+          });
+        
+          bookingForm.addEventListener('submit', (e) => {
+            const numberOfSeats = parseInt(seatsInput.value) || 0;
+            if (numberOfSeats > busCapacity) {
+              e.preventDefault();
+              alert(`Cannot book more than ${busCapacity} seats.`);
+            }
+          });
+        </script>
+        </div>      
+
+      </div>
+    </main>     
+</body>
+</html>

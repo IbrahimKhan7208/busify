@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Ticket</title>
+</head>
+<body>
+    <h1>Ticket Details</h1>
+    <p><strong>Ticket ID:</strong> <%= ticket._id %></p>
+    <p><strong>Passenger Name:</strong> <%= ticket.passengerName %></p>
+    <p><strong>Bus Number:</strong> <%= ticket.busNumber %></p>
+    <p><strong>Source:</strong> <%= ticket.source %></p>
+    <p><strong>Destination:</strong> <%= ticket.destination %></p>
+    <p><strong>Date:</strong> <%= ticket.date.toDateString() %></p>
+    <p><strong>Seat Number:</strong> <%= ticket.seatNumber %></p>
+
+    <button onclick="window.print()">Download Ticket (Print to PDF)</button>
+</body>
+</html>

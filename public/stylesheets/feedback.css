@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fd4942;
+    padding: 20px;
+}
+
+h1 {
+    color: navajowhite;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+.container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    max-width: 400px;
+    width: 100%;
+}
+
+label {
+    padding: 5px;
+    color: #913831;
+    font-weight: bold; /* Make labels more prominent */
+}
+
+select,
+textarea {
+    margin: 15px;
+    width: 90%; /* Make inputs take the full width */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+textarea {
+    resize: none; /* Prevent resizing of the textarea */
+}
+
+button {
+    background-color: #913831;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 200px;
+    margin: 0 auto; /* Center the button */
+    display: block;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #fd4942;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    transition: background-color 0.3s ease;
+}

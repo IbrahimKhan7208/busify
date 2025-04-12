@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Tickets</title>
+  <link rel="stylesheet" href="/stylesheets/show-ticket.css">
+</head>
+<body>
+  <div class="container">
+    <a href="/home"><img src="/images/Busify.png" alt="logo"></a>
+    <h1>My Tickets</h1>
+    
+    <% if (ticketDetails.length > 0) { %>
+      <% ticketDetails.forEach(({ ticket, journeyDate }) => { %>
+        <% if (ticket.status !== 'cancelled') { %> <!-- Only show tickets that are not cancelled -->
+          <div class="ticket-card">
+            <h2>Ticket Details - <%= journeyDate %></h2>
+            
+            <h2 class="n1">
+              <strong>
+                <%= ticket.busId ? ticket.busId.name : 'Bus might be removed by Agency' %>
+              </strong>
+            </h2>
+            
+            <p>
+              <strong>
+                <%= ticket.busId ? ticket.busId.source : 'N/A' %> 
+                To 
+                <%= ticket.busId ? ticket.busId.destination : 'N/A' %>
+              </strong>
+            </p>
+            
+            <p><strong>Date:</strong> <%= journeyDate %></p>
+            <p><strong>Departure Time:</strong> <%= ticket.departureTime.toLocaleTimeString('en-IN') %></p>
+            <p><strong>Arrival Time:</strong> <%= ticket.arrivalTime.toLocaleTimeString('en-IN') %></p>
+            <p><strong>Total Seats:</strong> <%= ticket.seats %></p>
+            <p><strong>Total Fare:</strong> ₹<%= ticket.fare %></p>
+            <hr>
+            
+            <div class="psg">
+              <h2>Passenger's Details</h2>
+              <table class="passenger-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Age</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% ticket.passengers.forEach(passenger => { %>
+                    <tr>
+                      <td><%= passenger.name %></td>
+                      <td><%= passenger.gender %></td>
+                      <td><%= passenger.age %></td>
+                    </tr>
+                  <% }); %>
+                </tbody>
+              </table>
+            </div>
+            
+            <br>
+            <hr>
+            
+            <form action="/cancel-ticket" method="POST" style="display: inline;">
+              <input type="hidden" name="ticketId" value="<%= ticket._id %>">
+              <button type="submit" class="btn" onclick="return confirm('Are you sure you want to cancel this ticket?');">Cancel Ticket</button>
+            </form>
+
+            <% if (ticket.busId) { %>
+              <button class="give-feedback-btn" data-bus-id="<%= ticket.busId._id %>">
+                Give Feedback
+              </button>
+            <% } else { %>
+              <p></p>
+            <% } %>            
+            
+          </div>
+          <br>
+        <% } %> <!-- End of cancelled check -->
+      <% }) %>
+    <% } else { %>
+      <p>No tickets available.</p>
+    <% } %>
+    
+    <div id="feedbackModal" class="modal" style="display: none;">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h1>Feedback Form</h1>
+        <form id="feedbackForm" action="/submit-feedback" method="POST">
+          <input type="hidden" name="busId" id="busIdInput">
+          <label for="rating">Rating:</label>
+          <select name="rating" id="rating" required>
+            <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
+            <option value="4">⭐️⭐️⭐️⭐️</option>
+            <option value="3">⭐️⭐️⭐️</option>
+            <option value="2">⭐️⭐️</option>
+            <option value="1">⭐️</option>
+          </select>
+          <br>
+          <label for="comments">Comments:</label>
+          <textarea name="comments" id="comments" placeholder="Optional"></textarea>
+          <br>
+          <button type="submit">Submit Feedback</button>
+        </form>
+      </div>
+    </div>    
+
+  </div>
+  <script>
+    const feedbackButtons = document.querySelectorAll('.give-feedback-btn');
+    const feedbackModal = document.getElementById('feedbackModal');
+    const busIdInput = document.getElementById('busIdInput');
+    const closeBtn = document.querySelector('.close-btn');
+  
+    feedbackButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+        const busId = button.getAttribute('data-bus-id');
+        console.log('Bus ID:', busId);
+        busIdInput.value = busId; // Set busId in the hidden input
+        feedbackModal.style.display = 'block'; // Show the modal
+        });
+    });
+  
+    closeBtn.addEventListener('click', () => {
+        feedbackModal.style.display = 'none'; // Hide the modal
+    });
+  
+    window.addEventListener('click', (event) => {
+        if (event.target === feedbackModal) {
+        feedbackModal.style.display = 'none'; // Close modal if clicked outside
+        }
+    });
+  </script>
+  
+</body>
+</html>

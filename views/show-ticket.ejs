@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Ticket</title>
+    <link rel="stylesheet" href="/stylesheets/show-ticket.css">
+</head>
+<body>
+  <div class="container">
+    <a href="/home"><img src="/images/Busify.png" alt="logo"></a>
+<h1>Your Ticket</h1>
+<hr>
+<h2><strong><%= ticket.busId.name %></strong></h2>
+<p><strong><%= ticket.busId.source %> To <%= ticket.busId.destination %></strong></p>
+<p><strong>Date:</strong> <%= journeyDate %></p>
+<p><strong>Departure Time:</strong> <%= ticket.departureTime.toLocaleTimeString('en-IN') %></p>
+<p><strong>Arrival Time:</strong> <%= ticket.arrivalTime.toLocaleTimeString('en-IN') %></p>
+<p><strong>Total Seats:</strong> <%= ticket.seats %></p>
+<p><strong>Total Fare:</strong> ₹<%= ticket.fare %></p>
+
+<hr>
+
+<div class="psg">
+  <h2>Passenger's Details</h2>
+  <table class="passenger-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Age</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% ticket.passengers.forEach(passenger => { %>
+        <tr>
+          <td><%= passenger.name %></td>
+          <td><%= passenger.gender %></td>
+          <td><%= passenger.age %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</div>
+    <br>
+
+    <h2>Bus Route</h2>
+    <iframe
+        width="600"
+        height="450"
+        style="border: 2px solid black; border-radius: 8px;"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyAlcHaynbXOODCCOtjn9i0MCUoAu5xhtBQ&origin=<%= encodeURIComponent(ticket.busId.source) %>&destination=<%= encodeURIComponent(ticket.busId.destination) %>">
+    </iframe>
+
+<hr>
+
+<form action="/cancel-ticket" method="POST" style="display: inline;">
+  <input type="hidden" name="ticketId" value="<%= ticket._id %>">
+  <button type="submit" class="btn" onclick="return confirm('Are you sure you want to cancel this ticket?');">Cancel Ticket</button>
+</form>
+
+</div>
+</body>
+</html>

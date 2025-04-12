@@ -1,0 +1,47 @@
+<html>
+<head>
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="/stylesheets/signup.css">
+</head>
+<body>
+  <div class="container">
+    <div class="signup-form-container">
+      <div class="logo">
+        <img src="/images/Busify.png" alt="Busify Logo" />
+      </div>
+      <h1>SIGN UP</h1>
+      <form action="/signup" method="POST" class="signup-form">
+        <label for="name">NAME:</label>
+        <input type="text" id="name" name="name" placeholder="Name" required>
+
+        <label for="username">USERNAME:</label>
+        <input type="text" id="username" name="username" placeholder="Username" required>
+
+        <label for="password">PASSWORD:</label>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+
+        <label for="role">SELECT ROLE:</label>
+        <div>
+          <label>
+            <input type="radio" name="role" value="user" checked>&nbsp;User &nbsp; &nbsp;</label>
+          <label>
+            <input type="radio" name="role" value="admin">&nbsp;Bus Agency</label>
+        </div>
+
+        <% if(error){ %>
+          <p class="error"><%= error %></p>
+        <% } %>
+
+        <button type="submit">Sign Up</button>
+      </form>
+      <p class="login-link">Already have an account? <a href="/login">Log in</a></p>
+    </div>
+    <div class="video-container">
+      <video id="myVideo" muted autoplay loop>
+        <source src="/images/vid.mp4" type="video/mp4">
+        Your browser does not support the video tag.`
+      </video>
+    </div>
+  </div>
+</body>
+</html>

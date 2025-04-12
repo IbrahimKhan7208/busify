@@ -1,0 +1,154 @@
+body {
+  font-family:  Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fd4942;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  position: relative; /* Enables positioning for the hover text */
+}
+
+.logo {
+  width: 120px;
+  height: 60px;
+  margin-right: 5px;
+}
+
+  .logo:hover {
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+      transition: linear 0.3s;
+  }
+
+.hover-text {
+  position: absolute;
+  bottom: -15%; /* Places the text */
+  left: 50%;
+  transform: translateX(-130%);
+  background-color: rgba(0, 0, 0, 0.8); /* Dark background for the text */
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  white-space: nowrap;
+  font-size: 12px;
+  opacity: 0; /* Initially hidden */
+  visibility: hidden; /* Prevents interaction when hidden */
+  transition: opacity 0.3s ease;
+}
+
+/* Show hover text on hover */
+.logo-container a:hover .hover-text {
+  opacity: 1;
+  visibility: visible;
+}
+
+.acc{
+  padding-top: 7px;
+}
+
+.accimg {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  padding: inherit;
+}
+
+.account-button {
+  display: flex;
+  font-size: 22px;
+  text-align: center;
+  padding: 5px;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.account-button:hover {
+  color: #fd4942;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  transition: linear 0.3s;
+}
+
+.container {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 20px 20px;
+}
+
+h1 {
+  text-align: center;
+  color: navajowhite;
+  margin-bottom: 30px;
+  text-shadow:0 2px 6px rgba(0, 0, 0, 0.4);
+}
+  
+.bus-card {
+  background-color: white;
+  padding: 5px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+  height: 150px;
+}
+
+.bus-name {
+  font-size: 2em;
+  color: #913831;
+  padding-right: 10px;
+  font-weight: bold;
+}
+
+p {
+  font-size: 1em;
+  color: black;
+  font-weight: 500;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1.2em;
+  background-color: #913831;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+}
+
+button:hover {
+  background-color: #fd4942;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  transition: background-color 0.3s ease;
+}
+    
+.vl {
+  border-left: 2px solid black;
+  height: 70px;
+}
+
+.vl1 {
+  border-left: 1px solid gray;
+  height: 40px;
+}
+
+h2{
+  text-align: center;
+  color: darkred;
+}

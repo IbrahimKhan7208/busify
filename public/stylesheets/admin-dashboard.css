@@ -1,0 +1,245 @@
+body {
+  background-color: #fd4942;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.flash-message {
+  background-color: #4BB543;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  position: fixed;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 5px;
+  z-index: 1000;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  position: relative; /* Enables positioning for the hover text */
+}
+
+.logo {
+  width: 120px;
+  height: 60px;
+  margin-right: 5px;
+}
+
+.sign-out-button{
+    font-size: 22px;
+    text-align: center;
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: white;
+    border: none;
+}
+
+.sign-out-button:hover{
+    color: #913831;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
+    transition: linear 0.3s;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px; /* spacing between links */
+  flex-grow: 1; /* allow it to take up available space */
+  list-style: none; /* remove bullets */
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+  font-weight: 530;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #fd4942;
+  transition: linear 0.3s;
+}
+
+.vl {
+  border-left: 1px solid grey;
+  height: 20px;
+}
+
+.title{
+  color: navajowhite;
+  margin-bottom: 20px;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+p {
+  font-size: 1.2em;
+  margin: 10px 0;
+  color: #913831;
+}
+
+canvas {
+  max-width: 800px;
+  padding: 20px;
+  margin-left: 50px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+h2{
+  text-align: center;
+  color: #913831 ; 
+}
+
+select {
+  margin-left: 5px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+label{
+  padding: 5px;
+  color: #913831 ;
+}
+
+.add-bus-container {
+  background-color: white;
+  width: 60%;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.6);
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.add-conatiner{
+  width: 99%;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: whitesmoke;
+}
+
+.add-bus-container label {
+  display: block;
+  margin-bottom: 2px;
+}
+  
+.add-bus-container input {
+  padding: 10px;
+  margin: 7px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 50%;
+}
+  
+.add-bus-container button {
+  background-color: #913831;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1.5em;
+  width: 200px;
+  margin: 0 auto;
+  display: block;
+}
+
+.add{
+  align-self: flex-end;
+  width: 100px;
+  border: none;
+}
+
+button:hover {
+  background-color: #fd4942;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  transition: background-color 0.3s ease;
+}
+
+hr{
+  border: 1px solid #913831;
+}
+  
+h1.title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+  
+table {
+  border-collapse: collapse;
+  width: 100%;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.8);
+  background-color: whitesmoke;
+  color: #000;
+  border-radius: 5px;
+}
+
+th, td {
+  border: 1px solid gray;
+  padding: 8px;
+  text-align: center;
+}
+
+
+.dlt-btn {
+  background-color: #913831;
+  color: white;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+}
+
+.feed {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd; 
+  border-radius: 8px; 
+  padding: 15px;
+  margin-bottom: 15px; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+  color: #333;
+  font-size: large;
+  max-width: 300px; 
+  margin: 0 auto;
+}
+
+.feed:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}

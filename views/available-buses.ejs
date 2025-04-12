@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Available Buses</title>
+  <link rel="stylesheet" href="/stylesheets/available-buses.css">
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+       <a href="/home">
+         <img src="/images/Busify.png" alt="Busify Logo" class="logo">
+         <span class="hover-text">Home</span>
+       </a>
+    </div>
+
+    <nav>
+        <a href="/account" class="account-button">
+            <img src="/images/acc.png" alt="Acc" class="accimg"/>
+            <span class="acc">Account</span>
+        </a>
+    </nav>
+</header>
+  <main>
+  <div class="container">
+    <h1>Available Buses</h1>
+    <div class="bus-list" id="bus-list">
+      <% if (show.length > 0) { %>
+            <% show.forEach(bus => { %>
+              <div class="bus-card">
+              <p class="bus-name"><%= bus.name%></p>
+              <p>Bus Number:<br><%= bus.busnumber%></p>
+              <div class="vl"></div>
+              <p>Bus Type:<br><%= bus.type%></p>
+              <div class="vl"></div>
+              <p>Available Seats:<br><%= bus.capacity%> Seats</p>
+              <div class="vl"></div>
+              <p>From:<br><%= bus.source%></p>
+              <div class="vl1"></div>
+              <p>To:<br><%= bus.destination%></p>
+              <div class="vl"></div>
+              <p>Departure Time:<br><%= bus.formattedDepartureTime %></p>
+              <div class="vl1"></div>
+              <p>Arrival Time:<br><%= bus.formattedArrivalTime %></p>
+              <div class="vl"></div>
+              <p>Price:<br>₹<%= bus.fare%></p>
+              <form action="/book-ticket" method="get">
+                <input type="hidden" name="busId" value="<%= bus._id %>">
+                <button type="submit" class="book-button">Book</button>
+              </form>
+          </div>
+            <% }); %>
+            <% } else { %>
+              <h2>No buses available for the selected route and date.</h2>
+            <% } %>
+      </div>
+      </div>
+    </main>
+</body>
+</html>

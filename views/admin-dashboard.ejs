@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bus Management Dashboard</title>
+  <link rel="stylesheet" href="/stylesheets/admin-dashboard.css">
+  <script src="/javascripts/admin-dashboard.js"></script>
+  <script src="/javascripts/account.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+         <img src="/images/Busify.png" alt="Busify Logo" class="logo">
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#insight-chart">Insight Chart</a></li>
+      <div class="vl"></div>
+      <li><a href="#bus-list">Bus List</a></li>
+      <div class="vl"></div>
+      <li><a href="#add-bus">Add Bus</a></li>
+      <div class="vl"></div>
+      <li><a href="#feedback">Feedbacks</a></li>
+    </ul>
+
+      <button class="sign-out-button" onclick="signOut()">Log Out</button>
+
+</header>
+<main>
+  <% if (success_msg) { %>
+    <div id="flash-message" class="flash-message">
+      <%= success_msg %>
+    </div>
+  <% } %>
+
+  <script>
+    const flashMessage = document.getElementById('flash-message');
+    if (flashMessage) {
+      setTimeout(() => {
+        flashMessage.style.opacity = '0';
+        setTimeout(() => {
+          flashMessage.remove();
+        }, 500);
+      }, 3000);
+    }
+  </script>
+  
+    <h1 class="title">Busify Bus Agency's Dashboard</h1> 
+    
+    <div class="add-bus-container">
+      <section id="insight-chart">
+    <h2><%= user.name %> Insights</h2>
+
+    <p><strong>Total Bookings:</strong> <%= totalBookings %></p>
+    <p><strong>Total Revenue:</strong> ₹<%= totalRevenue %></p>
+
+<canvas id="revenueChart"></canvas>
+
+<script>
+  var busNames = [];
+  var revenueData = [];
+
+  <% revenueByBus.forEach(bus => { %>
+      busNames.push('<%= bus.busDetails.name %> ( <%= bus.bookingCount %> Booking )');
+      revenueData.push(<%= bus.totalRevenue %>);
+  <% }) %>;
+
+  var ctx = document.getElementById('revenueChart').getContext('2d');
+  var chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: busNames, // Bus Names as Labels
+          datasets: [{
+              label: 'Revenue in ₹',
+              data: revenueData, // Revenue Data
+              backgroundColor: 'rgba(75, 192, 192, 0.6)',
+              borderColor: 'rgba(75, 192, 192, 1)',
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              y: {
+                  beginAtZero: true,
+                  title: {
+                      display: true,
+                      text: 'Revenue (₹)'
+                  }
+              }
+          }
+      }
+  });
+</script>
+</section>
+</div>
+
+    <br>
+    <section id="bus-list"></section>
+    <hr>
+    <h2 class="title">Your Buses</h2>
+    <table id="busTable">
+      <thead>
+        <tr>
+            <th>Bus Name</th>
+            <th>Bus Number</th>
+            <th>Bus Type</th>
+            <th>Capacity</th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Departure Time</th>
+            <th>Arrival Time</th>
+            <th>Fare</th>
+            <th>Action</th>
+          </tr>
+      </thead>
+      <tbody>
+        <% buses.forEach(bus => { %>
+        <tr>
+        <td><%= bus.name%></td>
+        <td><%= bus.busnumber%></td>
+        <td><%= bus.type%></td>
+        <td><%= bus.capacity%></td>
+        <td><%= bus.source%></td>
+        <td><%= bus.destination%></td>
+        <td><%= bus.formattedDepartureTime %></td>
+        <td><%= bus.formattedArrivalTime %></td>
+        <td>₹<%= bus.fare%></td>
+        <td><form action="/delete-bus/<%= bus.busnumber %>" method="get"> 
+          <button type="submit" class="dlt-btn" onclick="return confirm('Are you sure you want to remove this bus?');">Delete</button>
+        </form></td> 
+      </tr>  
+      <% }); %>
+      </tbody>
+    </table>
+  </section>
+    <br>
+    <hr>
+    <section id="add-bus">
+    <div class="add-bus-container">
+        <h2>Add New Bus</h2>
+        <form action="/addbus" method="post">
+        <div class="add-conatiner">
+          <label for="busName">Bus Name:</label>
+          <input type="text" name="name" required>
+          <br>
+      
+          <label for="busNo">Bus Number:</label>
+          <input type="text" name="busnumber" required>
+          <br>
+      
+        <label for="busType">Bus Type:</label>
+        <select name="type">
+        <option value="-1">Select Type</option>
+        <option value="Seater AC">Seater AC</option>
+        <option value="Seater Non-AC">Seater Non-AC</option>
+        <option value="Sleeper">Sleeper</option>
+        </select>
+        <br>
+    
+        <label for="busCapacity">Bus Capacity:</label>
+        <input type="number" id="busCapacity" name="capacity" required>
+
+        <label for="source">Source:</label>
+        <select id="source" name="source" onchange="updateOptions()">
+            <option value="-1">Select Source</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Ahmedabad">Ahmedabad</option>
+            <option value="Kolkata">Kolkata</option>
+          </select>
+
+        <label for="destination">Destination:</label>
+        <select id="destination" name="destination" onchange="updateOptions()">
+                <option value="-1">Select Destination</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Ahmedabad">Ahmedabad</option>
+                <option value="Kolkata">Kolkata</option>
+            </select>  
+
+        <label for="departureTime">Departure Time:</label>
+        <input type="datetime-local" id="departureTime" name="departureTime" required>
+
+        <label for="arrivalTime">Arrival Time:</label>
+        <input type="datetime-local" id="arrivalTime" name="arrivalTime" required>
+
+        <label for="fare">Fare:</label>
+        <input type="number" id="fare" name="fare" placeholder="₹ Enter amount" required>
+
+        </div>
+
+        <br>
+        <button class="add" type="submit">Add Bus</button>
+        </form>
+
+    </div>
+</section>
+    <br>
+    <hr>
+    <section id="feedback">
+    <h2 class="title">Feedbacks</h2>
+    <% feedbacks.forEach(function(feedback) { %>
+      <div class="add-bus-container">
+        <div class="feed">
+        <strong>Bus Name:</strong> <%= feedback.busId.name %><br>
+        <strong>Username:</strong> <%= feedback.username %><br>
+        <strong>Rating:</strong> <%= feedback.rating %><br>
+        <strong>Comments:</strong> <%= feedback.comments %><br>
+        <strong>Given On:</strong> <%= new Date(feedback.createdAt).toLocaleString('en-IN') %>
+      </div>
+      </div>
+    <% }); %>    
+  </section>
+    <hr>
+
+  </main>
+  </body>
+</html>

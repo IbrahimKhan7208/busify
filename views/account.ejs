@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Account Page</title>
+  <link rel="stylesheet" href="/stylesheets/account.css">
+  <script src="/javascripts/account.js"></script>
+</head>
+<body>
+  <div class="account-container">
+
+    <h2>My Account</h2>
+ 
+    <div class="container">
+    <div class="user-info">
+      <p class="user-name">Welcome! <%= user.name %></p>
+      <p class="user-email">Username: <%= user.username %></p>
+    </div>
+
+      <a href="/home">
+        <img src="/images/Busify.png" alt="Busify Logo" class="logo">
+      </a>
+    </div>
+
+    <a href="/booking-history" class="btn">Booking History</a> 
+
+    <a href="/show-my-tickets" class="btn">Show My Ticket</a>
+
+    <button class="sign-out-button" onclick="signOut()">Log Out</button>
+  </div>
+</body>
+</html>

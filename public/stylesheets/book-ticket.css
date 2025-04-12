@@ -1,0 +1,183 @@
+body{
+    font-family:  Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fd4942;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .logo {
+    width: 120px;
+    height: 60px;
+    margin-right: 5px;
+  }
+  
+    .logo:hover {
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+        transition: linear 0.3s;
+    }
+  
+  .hover-text {
+    position: absolute;
+    bottom: -15%; /* Places the text */
+    left: 50%;
+    transform: translateX(-130%);
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background for the text */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    font-size: 12px;
+    opacity: 0; /* Initially hidden */
+    visibility: hidden; /* Prevents interaction when hidden */
+    transition: opacity 0.3s ease;
+  }
+  
+  /* Show hover text on hover */
+  .logo-container a:hover .hover-text {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .acc{
+    padding-top: 7px;
+  }
+  
+  .accimg {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    padding: inherit;
+  }
+  
+  .account-button {
+    display: flex;
+    font-size: 22px;
+    text-align: center;
+    padding: 5px;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  .account-button:hover {
+    color: #fd4942;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    transition: linear 0.3s;
+  }
+
+.container {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    padding: 15px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    margin-bottom: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: navajowhite;
+    margin-bottom: 20px;
+    text-shadow:0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+h2 {
+    color: #913831;
+    text-shadow:0 2px 6px rgba(0, 0, 0, 0.2); 
+    text-decoration: underline;
+    text-align: center;
+}
+
+.bus-details {
+    width: 40%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin: 0 auto;
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-size: larger;
+    max-height: 400px;
+}
+
+.form-container {
+    flex: 0 50%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+label {
+    display: block;
+    color: black;
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+input {
+    width: 400px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid darkgrey;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+select {
+  margin-left: 5px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+fieldset{
+  margin: 15px;
+}
+
+button {
+    width: 50%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #913831;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 0 auto;
+}
+
+button:hover {
+    background-color: #fd4942;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
