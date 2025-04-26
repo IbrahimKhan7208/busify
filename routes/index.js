@@ -191,11 +191,10 @@ router.get('/booking-history', async (req, res) => {
     const username = req.user.username;
     const currentDateTime = new Date();
 
-    // Fetch all past tickets for the logged-in user
     const tickets = await ticketModel
       .find({ username, departureTime: { $lt: currentDateTime } })
       .sort({ departureTime: 1 })
-      .populate('busId'); // Populate bus details
+      .populate('busId'); 
 
     // Prepare ticket details with bus existence check
     const ticketDetails = tickets.map(ticket => ({
